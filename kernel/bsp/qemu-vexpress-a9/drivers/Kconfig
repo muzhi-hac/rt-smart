@@ -1,0 +1,73 @@
+config RT_USING_UART0
+    bool "Enable UART0"
+    default n
+
+config RT_USING_UART1
+    bool "Enable UART1"
+    default y
+
+config BSP_DRV_CLCD
+    bool "CLCD driver"
+    default y
+
+if BSP_DRV_CLCD
+    config BSP_LCD_WIDTH
+    int "Width of LCD panel"
+    default 640
+
+    config BSP_LCD_HEIGHT
+    int "Height of LCD panel"
+    default 480
+endif
+
+config BSP_DRV_EMAC
+    bool "EMAC driver"
+    default y
+
+
+
+
+choice
+    prompt "Select Test Configuration"
+    
+config TestB
+    bool "TestB"
+    depends on RT_USING_UART0
+
+config TestC
+    bool "TestC"
+    depends on RT_USING_UART1
+
+config TestD
+    bool "TestD"
+    depends on BSP_DRV_CLCD
+
+endchoice
+
+config TestA
+    bool "Enable TestA Feature"
+    default n
+    help
+        Enabling this option will activate the TestA feature
+        which is dependent on the user's selection in the choice above.
+
+
+menu "Inter-Thread communication"
+    config TestA
+        bool "Test A"
+        default y
+    choice
+        prompt "The maximal level value of priority of thread"
+        default RT_THREAD_PRIORITY_32
+
+        config RT_THREAD_PRIORITY_8
+            bool "8"
+
+        config RT_THREAD_PRIORITY_32
+            bool "32"
+
+        config RT_THREAD_PRIORITY_256
+            bool "256"
+    endchoice
+endmenu
+

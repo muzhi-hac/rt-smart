@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "vector": "c",
+        "rtthread.h": "c",
+        "rthw.h": "c",
+        "stdlib.h": "c",
+        "rtservice.h": "c",
+        "tc_comm.h": "c",
+        "typeindex": "c",
+        "typeinfo": "c",
+        "board.h": "c",
+        "cp15.h": "c",
+        "mmu.h": "c",
+        "page.h": "c"
+    }
+}
